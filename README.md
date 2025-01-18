@@ -1,1 +1,1 @@
-# Acme_Reservation_Planner
+CLSnapp's Block 34 Workshop: The Acme Reservation Planner w/ Guided Practice
