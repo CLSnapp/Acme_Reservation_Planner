@@ -67,6 +67,24 @@ const destroyReservation = async ({ id, customers_id }) => {
   return response.rows;
 };
 
+const destroyCustomer = async (id) => {
+  const SQL = `
+        DELETE FROM customers
+        WHERE id = $1 
+        `;
+  const response = await client.query(SQL, [id]);
+  return response.rows;
+};
+
+const destroyRestaurant = async (id) => {
+  const SQL = `
+        DELETE FROM restaurants
+        WHERE id = $1 
+        `;
+  const response = await client.query(SQL, [id]);
+  return response.rows;
+};
+
 module.exports = {
   createRestaurant,
   createCustomer,
@@ -75,4 +93,6 @@ module.exports = {
   fetchRestaurants,
   fetchReservations,
   destroyReservation,
+  destroyCustomer,
+  destroyRestaurant,
 };

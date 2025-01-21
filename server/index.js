@@ -16,6 +16,8 @@ const {
   fetchRestaurants,
   fetchReservations,
   destroyReservation,
+  destroyCustomer,
+  destroyRestaurant,
 } = require("./db");
 
 /*Read Customers*/
@@ -94,6 +96,26 @@ app.delete(
     }
   }
 );
+
+/*Delete Customer*/
+app.delete("/api/customers/:id", async (req, res, next) => {
+  try {
+    const { id } = req.params;
+    res.status(204).json(await destroyCustomer(id));
+  } catch (error) {
+    next(error);
+  }
+});
+
+/*Delete Restaurant*/
+app.delete("/api/restaurants/:id", async (req, res, next) => {
+  try {
+    const { id } = req.params;
+    res.status(204).json(await destroyRestaurant(id));
+  } catch (error) {
+    next(error);
+  }
+});
 
 app.listen(PORT, async () => {
   await client.connect();
